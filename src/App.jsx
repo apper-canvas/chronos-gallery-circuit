@@ -29,6 +29,9 @@ function App() {
   const userState = useSelector((state) => state.user)
   const isAuthenticated = userState?.isAuthenticated || false
   
+  // Cart functionality hooks - must be called before any conditional returns
+  const { isCartDrawerOpen, setIsCartDrawerOpen, getCartItemCount } = useCart()
+  
   // Initialize ApperUI once when the app loads
   useEffect(() => {
     const { ApperClient, ApperUI } = window.ApperSDK
@@ -146,7 +149,6 @@ function App() {
   }
 
   // Main authenticated application
-  const { isCartDrawerOpen, setIsCartDrawerOpen, getCartItemCount } = useCart()
 
   return (
     <AuthContext.Provider value={authMethods}>
