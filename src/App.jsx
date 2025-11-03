@@ -178,10 +178,9 @@ function App() {
           hideProgressBar={false}
           closeOnClick
           pauseOnHover
-          draggable
+draggable
         />
       </div>
-</div>
     </AuthContext.Provider>
   )
 }
