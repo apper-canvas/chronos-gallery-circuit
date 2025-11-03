@@ -1,15 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 import ApperIcon from "@/components/ApperIcon"
 import SearchBar from "@/components/molecules/SearchBar"
 import Button from "@/components/atoms/Button"
 import { cn } from "@/utils/cn"
-
-const Header = ({ cartItemCount = 0 }) => {
+import { AuthContext } from "../../App"
+const Header = ({ cartItemCount = 0, onCartClick }) => {
   const [searchQuery, setSearchQuery] = useState("")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const navigate = useNavigate()
-  
+  const { logout } = useContext(AuthContext)
+  const { user } = useSelector((state) => state.user)
   const categories = [
     { name: "Shop All", path: "/products" },
     { name: "Luxury", path: "/products?category=luxury" },
@@ -62,8 +64,26 @@ const Header = ({ cartItemCount = 0 }) => {
             />
           </div>
           
-          {/* Cart & Mobile Menu Toggle */}
+{/* User Actions & Cart & Mobile Menu Toggle */}
           <div className="flex items-center space-x-4">
+            {/* User greeting */}
+            {user && (
+              <span className="hidden md:block text-sm text-gray-700">
+                Welcome, {user.firstName || user.name || 'User'}
+              </span>
+            )}
+            
+            {/* Logout button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={logout}
+              className="hidden md:flex text-gray-700 hover:text-gold"
+            >
+              <ApperIcon name="LogOut" size={18} className="mr-1" />
+              Logout
+            </Button>
+            
             <Link
               to="/cart"
               className="relative p-2 text-gray-700 hover:text-gold transition-colors duration-150"
@@ -92,7 +112,7 @@ const Header = ({ cartItemCount = 0 }) => {
       <div className={cn(
         "lg:hidden overflow-hidden transition-all duration-300 ease-out bg-white border-t border-gray-200",
         isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-      )}>
+)}>
         <div className="px-4 py-6 space-y-6">
           {/* Mobile Search */}
           <SearchBar
@@ -113,6 +133,19 @@ const Header = ({ cartItemCount = 0 }) => {
                 {category.name}
               </Link>
             ))}
+            
+            {/* Mobile Logout */}
+            <Button
+              variant="ghost"
+              onClick={() => {
+                logout()
+                setIsMobileMenuOpen(false)
+              }}
+              className="text-left text-gray-700 hover:text-gold font-medium transition-colors duration-150 py-2"
+            >
+              <ApperIcon name="LogOut" size={18} className="mr-2" />
+              Logout
+            </Button>
           </nav>
         </div>
       </div>

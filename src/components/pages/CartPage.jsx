@@ -173,9 +173,9 @@ const CartPage = () => {
 }
 
 const CartItem = ({ item, onUpdateQuantity, onRemove, formatPrice }) => {
-  const productId = item.Id || item.productId
+const productId = item.Id || item.productId
   const selectedBand = item.selectedBand || ""
-  const itemTotal = item.price * item.quantity
+  const itemTotal = (item.price || 0) * item.quantity
   
   return (
     <motion.div
@@ -190,8 +190,8 @@ const CartItem = ({ item, onUpdateQuantity, onRemove, formatPrice }) => {
           {/* Product Image */}
           <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
             <img
-              src={item.images?.[0] || item.image}
-              alt={`${item.brand} ${item.model}`}
+src={item.images?.[0] || item.image || 'https://via.placeholder.com/200x200?text=No+Image'}
+              alt={`${item.brand || 'Unknown'} ${item.model || 'Unknown'}`}
               className="w-full h-full object-cover"
             />
           </div>
@@ -203,10 +203,10 @@ const CartItem = ({ item, onUpdateQuantity, onRemove, formatPrice }) => {
                 to={`/product/${productId}`}
                 className="font-display text-lg font-semibold text-primary hover:text-gold transition-colors"
               >
-                {item.brand} {item.model}
+{item.brand || 'Unknown'} {item.model || 'Unknown'}
               </Link>
               <p className="text-gray-600 text-sm">
-                {formatPrice(item.price)}
+                {formatPrice(item.price || 0)}
                 {selectedBand && (
                   <span className="ml-2">• {selectedBand}</span>
                 )}

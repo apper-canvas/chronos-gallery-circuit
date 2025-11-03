@@ -1,11 +1,21 @@
-import cartData from "@/services/mockData/cart.json"
-
-// Simulate API delay
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+import { toast } from "react-toastify"
 
 class CartService {
   constructor() {
+    // Initialize ApperClient
+    this.getApperClient()
+    this.tableName = 'cart_c'
     this.loadCart()
+  }
+
+  getApperClient() {
+    if (typeof window !== 'undefined' && window.ApperSDK) {
+      const { ApperClient } = window.ApperSDK
+      this.apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      })
+    }
   }
 
   loadCart() {
@@ -13,25 +23,52 @@ class CartService {
     if (savedCart) {
       this.cart = JSON.parse(savedCart)
     } else {
-      this.cart = { ...cartData }
+      this.cart = {
+        items: [],
+        subtotal: 0,
+        tax: 0,
+        total: 0
+      }
     }
   }
 
   saveCart() {
     localStorage.setItem("chronos-cart", JSON.stringify(this.cart))
+    // Also save to database for totals
+    this.saveCartToDatabase()
+  }
+
+  async saveCartToDatabase() {
+    try {
+      if (!this.apperClient) this.getApperClient()
+      
+      const params = {
+        records: [{
+          Name: `Cart-${Date.now()}`,
+          subtotal_c: this.cart.subtotal,
+          tax_c: this.cart.tax,
+          total_c: this.cart.total
+        }]
+      }
+      
+      const response = await this.apperClient.createRecord(this.tableName, params)
+      
+      if (!response.success) {
+        console.error("Failed to save cart to database:", response.message)
+      }
+    } catch (error) {
+      console.error("Error saving cart to database:", error?.response?.data?.message || error)
+    }
   }
 
   async getCart() {
-    await delay(100)
     this.loadCart()
     return { ...this.cart }
   }
 
   async addItem(product, quantity = 1, selectedBand = "") {
-    await delay(200)
     this.loadCart()
     
-    const itemKey = `${product.Id}-${selectedBand}`
     const existingItem = this.cart.items.find(
       item => item.productId === product.Id && item.selectedBand === selectedBand
     )
@@ -43,8 +80,14 @@ class CartService {
         productId: product.Id,
         quantity: quantity,
         selectedBand: selectedBand || "",
-        // Store product details for easy access
-        ...product
+        // Store product details for easy access with updated field names
+        Id: product.Id,
+        brand: product.brand,
+        model: product.model,
+        price: product.price,
+        images: product.images,
+        inStock: product.inStock,
+        stockCount: product.stockCount
       })
     }
 
@@ -54,7 +97,6 @@ class CartService {
   }
 
   async updateQuantity(productId, quantity, selectedBand = "") {
-    await delay(150)
     this.loadCart()
     
     const itemIndex = this.cart.items.findIndex(
@@ -76,7 +118,6 @@ class CartService {
   }
 
   async removeItem(productId, selectedBand = "") {
-    await delay(150)
     this.loadCart()
     
     this.cart.items = this.cart.items.filter(
@@ -89,7 +130,6 @@ class CartService {
   }
 
   async clearCart() {
-    await delay(100)
     this.cart = {
       items: [],
       subtotal: 0,

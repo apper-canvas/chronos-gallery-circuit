@@ -40,7 +40,7 @@ const ProductGrid = ({
         className
       )}
     >
-      {products.map((product) => (
+{products.map((product) => (
         <motion.div key={product.Id} variants={itemVariants}>
           <ProductCard
             product={product}

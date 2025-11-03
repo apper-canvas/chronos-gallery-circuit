@@ -92,7 +92,7 @@ const CartDrawer = ({
                 <div className="p-6 space-y-6">
                   {cartItems.map((item) => (
                     <CartItem
-                      key={`${item.Id}-${item.selectedBand || "default"}`}
+key={`${item.Id || item.productId}-${item.selectedBand || "default"}`}
                       item={item}
                       onUpdateQuantity={onUpdateQuantity}
                       onRemove={onRemoveItem}
@@ -163,19 +163,19 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
     <div className="flex gap-4">
       <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
         <img
-          src={item.images[0]}
-          alt={`${item.brand} ${item.model}`}
+src={item.images?.[0] || 'https://via.placeholder.com/200x200?text=No+Image'}
+          alt={`${item.brand || 'Unknown'} ${item.model || 'Unknown'}`}
           className="w-full h-full object-cover"
         />
       </div>
       
       <div className="flex-1 space-y-2">
         <div>
-          <h4 className="font-medium text-primary line-clamp-1">
-            {item.brand} {item.model}
+<h4 className="font-medium text-primary line-clamp-1">
+            {item.brand || 'Unknown'} {item.model || 'Unknown'}
           </h4>
           <p className="text-sm text-gray-600">
-            {formatPrice(item.price)}
+            {formatPrice(item.price || 0)}
             {item.selectedBand && (
               <span className="ml-2">• {item.selectedBand}</span>
             )}
@@ -184,8 +184,8 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
         
         <div className="flex items-center justify-between">
           <QuantitySelector
-            value={item.quantity}
-            onChange={(quantity) => onUpdateQuantity(item.Id, quantity, item.selectedBand)}
+value={item.quantity}
+            onChange={(quantity) => onUpdateQuantity(item.Id || item.productId, quantity, item.selectedBand)}
             min={1}
             max={item.stockCount || 10}
           />
@@ -197,7 +197,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => onRemove(item.Id, item.selectedBand)}
+onClick={() => onRemove(item.Id || item.productId, item.selectedBand)}
               className="text-gray-400 hover:text-error"
             >
               <ApperIcon name="Trash2" size={16} />

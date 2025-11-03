@@ -42,11 +42,11 @@ const ProductCard = ({
       className={cn("group", className)}
     >
       <Card hover className="overflow-hidden">
-        <Link to={`/product/${product.Id}`}>
+<Link to={`/product/${product.Id}`}>
           <div className="relative aspect-square overflow-hidden bg-gray-50">
             <img
-              src={product.images[0]}
-              alt={`${product.brand} ${product.model}`}
+              src={product.images?.[0] || 'https://via.placeholder.com/400x400?text=No+Image'}
+              alt={`${product.brand || ''} ${product.model || ''}`}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
@@ -60,7 +60,7 @@ const ProductCard = ({
               </div>
             )}
             
-            {/* Stock Badge */}
+{/* Stock Badge */}
             {!product.inStock && (
               <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                 <Badge variant="error">
@@ -100,23 +100,23 @@ const ProductCard = ({
             {/* Brand & Model */}
             <div>
               <p className="text-sm font-medium text-gold uppercase tracking-wide">
-                {product.brand}
+{product.brand || 'Unknown Brand'}
               </p>
               <h3 className="font-display text-lg font-semibold text-primary line-clamp-2">
-                {product.model}
+                {product.model || 'Unknown Model'}
               </h3>
             </div>
             
             {/* Specifications */}
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline" className="text-xs">
-                {product.movement}
+{product.movement || 'N/A'}
               </Badge>
               <Badge variant="outline" className="text-xs">
-                {product.caseSize}mm
+                {product.caseSize || 0}mm
               </Badge>
               <Badge variant="outline" className="text-xs">
-                {product.waterResistance}
+                {product.waterResistance || 'N/A'}
               </Badge>
             </div>
             
@@ -124,7 +124,7 @@ const ProductCard = ({
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-2xl font-bold text-primary">
-                  {formatPrice(product.price)}
+{formatPrice(product.price || 0)}
                 </span>
                 {product.originalPrice && product.originalPrice > product.price && (
                   <span className="ml-2 text-sm text-gray-500 line-through">

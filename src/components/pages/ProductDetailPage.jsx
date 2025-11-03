@@ -1,16 +1,16 @@
-import React, { useState } from "react"
-import { useParams, Link } from "react-router-dom"
-import { motion } from "framer-motion"
-import ApperIcon from "@/components/ApperIcon"
-import Button from "@/components/atoms/Button"
-import Badge from "@/components/atoms/Badge"
-import QuantitySelector from "@/components/molecules/QuantitySelector"
-import ProductGrid from "@/components/organisms/ProductGrid"
-import QuickViewModal from "@/components/organisms/QuickViewModal"
-import Loading from "@/components/ui/Loading"
-import Error from "@/components/ui/Error"
-import { useProduct } from "@/hooks/useProduct"
-import { useCart } from "@/hooks/useCart"
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useProduct } from "@/hooks/useProduct";
+import { useCart } from "@/hooks/useCart";
+import ApperIcon from "@/components/ApperIcon";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
+import QuickViewModal from "@/components/organisms/QuickViewModal";
+import ProductGrid from "@/components/organisms/ProductGrid";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
+import QuantitySelector from "@/components/molecules/QuantitySelector";
 
 const ProductDetailPage = () => {
   const { id } = useParams()
@@ -79,14 +79,14 @@ const ProductDetailPage = () => {
     }).format(price)
   }
   
-  const specifications = [
-    { label: "Brand", value: product.brand },
-    { label: "Model", value: product.model },
-    { label: "Movement", value: product.movement },
-    { label: "Case Size", value: `${product.caseSize}mm` },
-    { label: "Case Material", value: product.caseMaterial },
-    { label: "Band Material", value: product.bandMaterial },
-    { label: "Water Resistance", value: product.waterResistance },
+const specifications = [
+    { label: "Brand", value: product.brand || 'N/A' },
+    { label: "Model", value: product.model || 'N/A' },
+    { label: "Movement", value: product.movement || 'N/A' },
+    { label: "Case Size", value: `${product.caseSize || 0}mm` },
+    { label: "Case Material", value: product.caseMaterial || 'N/A' },
+    { label: "Band Material", value: product.bandMaterial || 'N/A' },
+    { label: "Water Resistance", value: product.waterResistance || 'N/A' },
     { label: "Caliber", value: product.specifications?.caliber || "N/A" },
     { label: "Power Reserve", value: product.specifications?.powerReserve || "N/A" }
   ]
@@ -101,9 +101,9 @@ const ProductDetailPage = () => {
             <li><ApperIcon name="ChevronRight" size={16} /></li>
             <li><Link to="/products" className="hover:text-gold">Watches</Link></li>
             <li><ApperIcon name="ChevronRight" size={16} /></li>
-            <li><Link to={`/products?category=${product.category.toLowerCase()}`} className="hover:text-gold">{product.category}</Link></li>
+<li><Link to={`/products?category=${(product.category || '').toLowerCase()}`} className="hover:text-gold">{product.category || 'Unknown'}</Link></li>
             <li><ApperIcon name="ChevronRight" size={16} /></li>
-            <li className="text-primary font-medium">{product.brand} {product.model}</li>
+            <li className="text-primary font-medium">{product.brand || 'Unknown'} {product.model || 'Unknown'}</li>
           </ol>
         </nav>
         
@@ -118,13 +118,13 @@ const ProductDetailPage = () => {
               transition={{ duration: 0.3 }}
             >
               <img
-                src={product.images[selectedImage]}
-                alt={`${product.brand} ${product.model}`}
+src={product.images?.[selectedImage] || 'https://via.placeholder.com/600x600?text=No+Image'}
+                alt={`${product.brand || 'Unknown'} ${product.model || 'Unknown'}`}
                 className="w-full h-full object-cover"
               />
             </motion.div>
             
-            {product.images.length > 1 && (
+            {product.images && product.images.length > 1 && (
               <div className="flex gap-3">
                 {product.images.map((image, index) => (
                   <button
@@ -148,15 +148,15 @@ const ProductDetailPage = () => {
           {/* Product Details */}
           <div className="space-y-6">
             <div>
-              <p className="text-gold font-medium uppercase tracking-wide mb-2">
-                {product.brand}
+<p className="text-gold font-medium uppercase tracking-wide mb-2">
+                {product.brand || 'Unknown Brand'}
               </p>
               <h1 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4">
-                {product.model}
+                {product.model || 'Unknown Model'}
               </h1>
               <div className="flex items-center gap-4 mb-4">
                 <span className="text-4xl font-bold text-primary">
-                  {formatPrice(product.price)}
+                  {formatPrice(product.price || 0)}
                 </span>
                 {product.originalPrice && product.originalPrice > product.price && (
                   <div className="flex items-center gap-2">
@@ -173,10 +173,10 @@ const ProductDetailPage = () => {
             
             {/* Stock Status */}
             <div>
-              {product.inStock ? (
+{product.inStock ? (
                 <Badge variant="success" className="text-sm">
                   <ApperIcon name="Check" size={16} className="mr-1" />
-                  In Stock ({product.stockCount} available)
+                  In Stock ({product.stockCount || 0} available)
                 </Badge>
               ) : (
                 <Badge variant="error" className="text-sm">
@@ -188,21 +188,21 @@ const ProductDetailPage = () => {
             
             {/* Key Specifications */}
             <div className="flex flex-wrap gap-2">
-              <Badge variant="outline">{product.movement}</Badge>
-              <Badge variant="outline">{product.caseSize}mm</Badge>
-              <Badge variant="outline">{product.waterResistance}</Badge>
-              <Badge variant="outline">{product.caseMaterial}</Badge>
+<Badge variant="outline">{product.movement || 'N/A'}</Badge>
+              <Badge variant="outline">{product.caseSize || 0}mm</Badge>
+              <Badge variant="outline">{product.waterResistance || 'N/A'}</Badge>
+              <Badge variant="outline">{product.caseMaterial || 'N/A'}</Badge>
             </div>
             
             {/* Description */}
             <div>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {product.description}
+<p className="text-gray-700 leading-relaxed text-lg">
+                {product.description || 'No description available.'}
               </p>
             </div>
             
             {/* Band Options */}
-            {product.bandOptions && product.bandOptions.length > 1 && (
+{product.bandOptions && product.bandOptions.length > 1 && (
               <div>
                 <h3 className="font-semibold text-primary mb-3">Band Options</h3>
                 <div className="grid grid-cols-2 gap-2">
@@ -227,7 +227,7 @@ const ProductDetailPage = () => {
             )}
             
             {/* Quantity & Add to Cart */}
-            {product.inStock && (
+{product.inStock && (
               <div className="space-y-4 pt-4 border-t border-gray-200">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -239,7 +239,6 @@ const ProductDetailPage = () => {
                     max={product.stockCount || 10}
                   />
                 </div>
-                
                 <div className="flex gap-4">
                   <Button 
                     size="lg"
