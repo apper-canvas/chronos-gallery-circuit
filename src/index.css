@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Toast customization */
+.Toastify__toast {
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  min-height: 56px;
+}
+
+.Toastify__toast-container {
+  width: 380px;
+  max-width: 90vw;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: white;
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #d4af37, #c9a961);
+  color: white;
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.Toastify__close-button {
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0.8;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c9a961;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+/* Focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #d4af37;
+  ring-opacity: 0.5;
+}
+
+/* Image loading optimization */
+img {
+  loading: lazy;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography improvements */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom utilities */
+.backdrop-blur-header {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.shadow-luxury {
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1), 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-luxury-hover {
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #d4af37, #c9a961);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #d4af37, #c9a961);
+}
+
+.bg-gradient-gold-hover {
+  background: linear-gradient(135deg, #c9a961, #b8954d);
+}

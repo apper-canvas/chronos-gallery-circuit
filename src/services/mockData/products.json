@@ -1,0 +1,315 @@
+[
+  {
+    "Id": 1,
+    "brand": "Rolex",
+    "model": "Submariner Date",
+    "price": 12500,
+    "originalPrice": 14000,
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=600&h=600&fit=crop"
+    ],
+    "category": "Luxury",
+    "movement": "Automatic",
+    "caseSize": 41,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Stainless Steel",
+    "bandOptions": ["Stainless Steel", "Rubber Strap"],
+    "waterResistance": "300m",
+    "description": "The Rolex Submariner Date combines classic design with modern functionality. This iconic diving watch features a unidirectional rotating bezel and luminescent display for enhanced underwater visibility.",
+    "specifications": {
+      "caliber": "3235",
+      "powerReserve": "70 hours",
+      "functions": ["Hours", "Minutes", "Seconds", "Date"]
+    },
+    "inStock": true,
+    "stockCount": 3,
+    "featured": true
+  },
+  {
+    "Id": 2,
+    "brand": "Omega",
+    "model": "Speedmaster Professional",
+    "price": 6800,
+    "images": [
+      "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=600&h=600&fit=crop"
+    ],
+    "category": "Sport",
+    "movement": "Manual",
+    "caseSize": 42,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Stainless Steel",
+    "bandOptions": ["Stainless Steel", "Leather Strap"],
+    "waterResistance": "50m",
+    "description": "The legendary moonwatch worn by NASA astronauts. This manual-winding chronograph is renowned for its precision, durability, and historic significance in space exploration.",
+    "specifications": {
+      "caliber": "1863",
+      "powerReserve": "48 hours",
+      "functions": ["Chronograph", "Tachymeter", "Small Seconds"]
+    },
+    "inStock": true,
+    "stockCount": 5,
+    "featured": true
+  },
+  {
+    "Id": 3,
+    "brand": "TAG Heuer",
+    "model": "Carrera Chronograph",
+    "price": 4200,
+    "images": [
+      "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=600&fit=crop"
+    ],
+    "category": "Sport",
+    "movement": "Automatic",
+    "caseSize": 43,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Leather",
+    "bandOptions": ["Leather Strap", "Steel Bracelet"],
+    "waterResistance": "100m",
+    "description": "Inspired by the golden age of motorsport, this Carrera chronograph combines racing heritage with contemporary watchmaking excellence.",
+    "specifications": {
+      "caliber": "Heuer 02",
+      "powerReserve": "80 hours",
+      "functions": ["Chronograph", "Date", "Column Wheel"]
+    },
+    "inStock": true,
+    "stockCount": 8,
+    "featured": false
+  },
+  {
+    "Id": 4,
+    "brand": "Seiko",
+    "model": "Prospex Solar Diver",
+    "price": 285,
+    "images": [
+      "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1618993123681-5ad8ec790d13?w=600&h=600&fit=crop"
+    ],
+    "category": "Sport",
+    "movement": "Solar Quartz",
+    "caseSize": 44,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Silicone",
+    "bandOptions": ["Silicone Strap"],
+    "waterResistance": "200m",
+    "description": "Solar-powered diving watch with exceptional durability and reliability. Features luminous hands and markers for enhanced visibility underwater.",
+    "specifications": {
+      "caliber": "V157",
+      "powerReserve": "10 months",
+      "functions": ["Date", "Rotating Bezel", "Luminous Display"]
+    },
+    "inStock": true,
+    "stockCount": 15,
+    "featured": false
+  },
+  {
+    "Id": 5,
+    "brand": "Citizen",
+    "model": "Eco-Drive Titanium",
+    "price": 425,
+    "images": [
+      "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1611766349284-943fdb69c2e3?w=600&h=600&fit=crop"
+    ],
+    "category": "Dress",
+    "movement": "Eco-Drive",
+    "caseSize": 40,
+    "caseMaterial": "Titanium",
+    "bandMaterial": "Titanium",
+    "bandOptions": ["Titanium Bracelet"],
+    "waterResistance": "100m",
+    "description": "Lightweight titanium construction with Eco-Drive technology. Never needs a battery and charges from any light source.",
+    "specifications": {
+      "caliber": "E111",
+      "powerReserve": "6 months",
+      "functions": ["Date", "Anti-magnetic", "Scratch Resistant"]
+    },
+    "inStock": true,
+    "stockCount": 12,
+    "featured": true
+  },
+  {
+    "Id": 6,
+    "brand": "Casio",
+    "model": "G-Shock MTG-B1000",
+    "price": 550,
+    "images": [
+      "https://images.unsplash.com/photo-1516975858648-b3ca6eca5c9b?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1529467255112-595fbe77d6df?w=600&h=600&fit=crop"
+    ],
+    "category": "Sport",
+    "movement": "Digital Quartz",
+    "caseSize": 51,
+    "caseMaterial": "Carbon & Steel",
+    "bandMaterial": "Resin",
+    "bandOptions": ["Resin Band"],
+    "waterResistance": "200m",
+    "description": "Tough solar-powered G-Shock with Bluetooth connectivity. Built to withstand the most extreme conditions while maintaining precision.",
+    "specifications": {
+      "caliber": "5543",
+      "powerReserve": "23 months",
+      "functions": ["Bluetooth", "World Time", "Stopwatch", "Timer"]
+    },
+    "inStock": false,
+    "stockCount": 0,
+    "featured": false
+  },
+  {
+    "Id": 7,
+    "brand": "Tudor",
+    "model": "Black Bay 58",
+    "price": 3750,
+    "images": [
+      "https://images.unsplash.com/photo-1614002401070-12ad82e5e377?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1580379176053-2b2cdcc8e29b?w=600&h=600&fit=crop"
+    ],
+    "category": "Luxury",
+    "movement": "Automatic",
+    "caseSize": 39,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Stainless Steel",
+    "bandOptions": ["Steel Bracelet", "Fabric Strap"],
+    "waterResistance": "200m",
+    "description": "Vintage-inspired diving watch with modern reliability. The perfect size for any wrist, combining heritage design with contemporary performance.",
+    "specifications": {
+      "caliber": "MT5402",
+      "powerReserve": "70 hours",
+      "functions": ["Diving Bezel", "Luminous", "COSC Certified"]
+    },
+    "inStock": true,
+    "stockCount": 4,
+    "featured": true
+  },
+  {
+    "Id": 8,
+    "brand": "Breitling",
+    "model": "Navitimer B01",
+    "price": 8200,
+    "images": [
+      "https://images.unsplash.com/photo-1627736421615-1d6b0d5b3e32?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1556123013-f6ca8a6fb6be?w=600&h=600&fit=crop"
+    ],
+    "category": "Luxury",
+    "movement": "Automatic",
+    "caseSize": 46,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Leather",
+    "bandOptions": ["Leather Strap", "Steel Bracelet"],
+    "waterResistance": "30m",
+    "description": "The ultimate pilot's watch with integrated slide rule bezel. A true icon of aviation timekeeping with exceptional chronograph precision.",
+    "specifications": {
+      "caliber": "01",
+      "powerReserve": "70 hours",
+      "functions": ["Chronograph", "Slide Rule", "COSC Certified"]
+    },
+    "inStock": true,
+    "stockCount": 2,
+    "featured": false
+  },
+  {
+    "Id": 9,
+    "brand": "Seiko",
+    "model": "5 Sports Automatic",
+    "price": 140,
+    "images": [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1582801463825-7e41a9a0b8e8?w=600&h=600&fit=crop"
+    ],
+    "category": "Casual",
+    "movement": "Automatic",
+    "caseSize": 42,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Nylon",
+    "bandOptions": ["NATO Strap", "Steel Bracelet"],
+    "waterResistance": "100m",
+    "description": "Affordable automatic watch perfect for everyday wear. Reliable movement and sporty design make it ideal for active lifestyles.",
+    "specifications": {
+      "caliber": "4R36",
+      "powerReserve": "41 hours",
+      "functions": ["Day-Date", "Hacking Seconds", "Hand Winding"]
+    },
+    "inStock": true,
+    "stockCount": 25,
+    "featured": false
+  },
+  {
+    "Id": 10,
+    "brand": "Omega",
+    "model": "Seamaster Planet Ocean",
+    "price": 5400,
+    "images": [
+      "https://images.unsplash.com/photo-1608062541915-8f47fec40d95?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=600&h=600&fit=crop"
+    ],
+    "category": "Luxury",
+    "movement": "Automatic",
+    "caseSize": 43.5,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Stainless Steel",
+    "bandOptions": ["Steel Bracelet", "Rubber Strap"],
+    "waterResistance": "600m",
+    "description": "Professional diving watch with exceptional water resistance. Features helium escape valve and Master Chronometer movement.",
+    "specifications": {
+      "caliber": "8900",
+      "powerReserve": "60 hours",
+      "functions": ["Helium Valve", "Ceramic Bezel", "Anti-magnetic"]
+    },
+    "inStock": true,
+    "stockCount": 6,
+    "featured": true
+  },
+  {
+    "Id": 11,
+    "brand": "TAG Heuer",
+    "model": "Formula 1 Quartz",
+    "price": 1200,
+    "images": [
+      "https://images.unsplash.com/photo-1609126404175-64b9c7d2a6ae?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1611466919049-7d5bf62f2dd1?w=600&h=600&fit=crop"
+    ],
+    "category": "Sport",
+    "movement": "Quartz",
+    "caseSize": 41,
+    "caseMaterial": "Stainless Steel",
+    "bandMaterial": "Stainless Steel",
+    "bandOptions": ["Steel Bracelet"],
+    "waterResistance": "200m",
+    "description": "Racing-inspired design with precision quartz movement. Bold and sporty watch perfect for active individuals.",
+    "specifications": {
+      "caliber": "ETA F1",
+      "powerReserve": "2 years",
+      "functions": ["Date", "Luminous", "Rotating Bezel"]
+    },
+    "inStock": true,
+    "stockCount": 10,
+    "featured": false
+  },
+  {
+    "Id": 12,
+    "brand": "Citizen",
+    "model": "Promaster Skyhawk A-T",
+    "price": 575,
+    "images": [
+      "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1548181048-ddc3da6c5a5c?w=600&h=600&fit=crop"
+    ],
+    "category": "Sport",
+    "movement": "Radio-Controlled",
+    "caseSize": 47,
+    "caseMaterial": "Super Titanium",
+    "bandMaterial": "Titanium",
+    "bandOptions": ["Titanium Bracelet"],
+    "waterResistance": "200m",
+    "description": "Pilot's watch with atomic timekeeping accuracy. Features world time, chronograph, and alarm functions for global travelers.",
+    "specifications": {
+      "caliber": "U600",
+      "powerReserve": "6 months",
+      "functions": ["Radio Sync", "World Time", "Perpetual Calendar"]
+    },
+    "inStock": true,
+    "stockCount": 7,
+    "featured": false
+  }
+]
