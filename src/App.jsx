@@ -2,20 +2,20 @@ import React, { createContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import { clearUser, setUser } from "./store/userSlice";
-import Login from "@/components/pages/Login";
-import Signup from "@/components/pages/Signup";
-import Callback from "@/components/pages/Callback";
-import ErrorPage from "@/components/pages/ErrorPage";
-import ResetPassword from "@/components/pages/ResetPassword";
-import PromptPassword from "@/components/pages/PromptPassword";
 import { useCart } from "@/hooks/useCart";
 import HomePage from "@/components/pages/HomePage";
+import PromptPassword from "@/components/pages/PromptPassword";
 import ProductsPage from "@/components/pages/ProductsPage";
+import Callback from "@/components/pages/Callback";
+import ErrorPage from "@/components/pages/ErrorPage";
+import Signup from "@/components/pages/Signup";
 import CartPage from "@/components/pages/CartPage";
+import Login from "@/components/pages/Login";
 import ProductDetailPage from "@/components/pages/ProductDetailPage";
+import ResetPassword from "@/components/pages/ResetPassword";
 import Header from "@/components/organisms/Header";
 import CartDrawer from "@/components/organisms/CartDrawer";
+import { clearUser, setUser } from "@/store/userSlice";
 
 // Create auth context
 export const AuthContext = createContext(null)
@@ -152,9 +152,9 @@ function App() {
 
   return (
     <AuthContext.Provider value={authMethods}>
-      <div className="min-h-screen bg-background">
+<div className="min-h-screen bg-background">
         <Header 
-          cartItemCount={getCartItemCount()} 
+          cartItemCount={getCartItemCount()}
           onCartClick={() => setIsCartDrawerOpen(true)}
         />
         
