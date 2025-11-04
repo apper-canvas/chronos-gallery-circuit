@@ -30,7 +30,7 @@ function App() {
   const isAuthenticated = userState?.isAuthenticated || false
   
   // Cart functionality hooks - must be called before any conditional returns
-  const { isCartDrawerOpen, setIsCartDrawerOpen, getCartItemCount } = useCart()
+const { isCartDrawerOpen, setIsCartDrawerOpen, getItemCount } = useCart()
   
   // Initialize ApperUI once when the app loads
   useEffect(() => {
@@ -154,7 +154,7 @@ function App() {
     <AuthContext.Provider value={authMethods}>
 <div className="min-h-screen bg-background">
         <Header 
-          cartItemCount={getCartItemCount()}
+cartItemCount={getItemCount()}
           onCartClick={() => setIsCartDrawerOpen(true)}
         />
         
